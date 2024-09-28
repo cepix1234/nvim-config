@@ -1,5 +1,5 @@
 
-function ColorMyPenciles(color)
+function ColorMyPencils(color)
 	color = color or "kanagawa-dragon"
 	vim.cmd.colorscheme(color)
 
@@ -7,4 +7,4 @@ function ColorMyPenciles(color)
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
-ColorMyPenciles()
+ColorMyPencils()
