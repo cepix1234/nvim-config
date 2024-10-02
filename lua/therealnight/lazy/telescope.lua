@@ -1,6 +1,5 @@
 return {
     checker = { enabled = true },
-    checker = { enabled = true },
     "nvim-telescope/telescope.nvim",
 
     tag = "0.1.5",
