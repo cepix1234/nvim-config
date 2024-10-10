@@ -11,6 +11,7 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "jose-elias-alvarez/null-ls.nvim"
     },
 
     config = function()
@@ -29,6 +30,7 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "gopls",
+                "ts_ls"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -88,8 +90,8 @@ return {
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }, -- For luasnip users.
             }, {
-                { name = 'buffer' },
-            })
+                    { name = 'buffer' },
+                })
         })
 
         vim.diagnostic.config({
@@ -101,6 +103,16 @@ return {
                 source = "always",
                 header = "",
                 prefix = "",
+            },
+        })
+
+        local null_ls = require("null-ls")
+
+        null_ls.setup({
+            sources = {
+                null_ls.builtins.formatting.stylua,
+                null_ls.builtins.diagnostics.eslint,
+                null_ls.builtins.completion.spell,
             },
         })
     end
