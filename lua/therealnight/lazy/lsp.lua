@@ -16,12 +16,7 @@ return {
 
     config = function()
         local cmp = require('cmp')
-        local cmp_lsp = require("cmp_nvim_lsp")
-        local capabilities = vim.tbl_deep_extend(
-            "force",
-            {},
-            vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities())
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
 
         require("fidget").setup({})
         require("mason").setup()
@@ -30,30 +25,15 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "gopls",
-                "ts_ls"
+                "ts_ls",
+                "eslint",
+                "jsonls"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
-                end,
-
-                zls = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.zls.setup({
-                        root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
-                        settings = {
-                            zls = {
-                                enable_inlay_hints = true,
-                                enable_snippets = true,
-                                warn_style = true,
-                            },
-                        },
-                    })
-                    vim.g.zig_fmt_parse_errors = 0
-                    vim.g.zig_fmt_autosave = 0
-
                 end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
@@ -114,6 +94,19 @@ return {
                 null_ls.builtins.diagnostics.eslint,
                 null_ls.builtins.completion.spell,
             },
+        })
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+
+            callback = function(ev)
+                local opts = { buffer = ev.buf }
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                vim.keymap.set("n", "gs", vim.lsp.buf.rename, opts)
+                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                vim.keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, opts)
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+            end,
         })
     end
 }
