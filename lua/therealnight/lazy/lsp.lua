@@ -27,7 +27,9 @@ return {
                 "gopls",
                 "ts_ls",
                 "eslint",
-                "jsonls"
+                "jsonls",
+                "pylsp",
+                "csharp_ls"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
