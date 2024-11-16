@@ -40,6 +40,16 @@ return {
                 branch = "master",
             },
         }
+        treesitter_parser_config.powershell = {
+            install_info = {
+                url = "~/.config/nvim/lua/therealnight/tsparsers/tree-sitter-powershell/",
+                files = { "src/parser.c", "src/scanner.c"},
+                branch = "main",
+                generate_requires_npm = false,
+                requires_generate_from_grammar = false,
+            },
+            filetype = "ps1",
+        }
 
         vim.treesitter.language.register("templ", "templ")
     end

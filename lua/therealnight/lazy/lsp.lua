@@ -10,7 +10,7 @@ return {
         "hrsh7th/nvim-cmp",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
-        "j-hui/fidget.nvim",
+            "j-hui/fidget.nvim",
         "jose-elias-alvarez/null-ls.nvim"
     },
 
@@ -51,6 +51,17 @@ return {
                         }
                     }
                 end,
+                ["powershell_es"] = function()
+                    local lspconfig = require('lspconfig')
+                    lspconfig.powershell_es.setup{
+                        bundle_path = '~/.config/nvim/customLsp/PowershellEditorService/',
+                        on_attach = function(client, bufnr)
+                            vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+                        end,
+                        settings = {powershell = { codeFormatting = { Preset = 'OTBS'} } }
+                    }
+                end,
+
             }
         })
 
