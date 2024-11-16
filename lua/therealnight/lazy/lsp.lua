@@ -29,7 +29,8 @@ return {
                 "eslint",
                 "jsonls",
                 "pylsp",
-                "csharp_ls"
+                "csharp_ls",
+                "powershell_es"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -51,17 +52,6 @@ return {
                         }
                     }
                 end,
-                ["powershell_es"] = function()
-                    local lspconfig = require('lspconfig')
-                    lspconfig.powershell_es.setup{
-                        bundle_path = '~/.config/nvim/customLsp/PowershellEditorService/',
-                        on_attach = function(client, bufnr)
-                            vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-                        end,
-                        settings = {powershell = { codeFormatting = { Preset = 'OTBS'} } }
-                    }
-                end,
-
             }
         })
 
