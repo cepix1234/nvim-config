@@ -3,11 +3,14 @@ return {
     version = "*",
     config = function()
         require("toggleterm").setup({
-            open_mapping = [[<leader>t]], -- or { [[<c-\>]], [[<c-¥>]] } if you also use a Japanese keyboard.
             persist_size = true,
             persist_mode = true,
             direction = 'horizontal',
             shell = 'fish',
+        })
+        vim.keymap.set("n", "<leader>t", '<Cmd>execute v:count . "ToggleTerm"<CR>', {
+            desc = "Toggle Terminal",
+            silent = true,
         })
         function _G.set_terminal_keymaps()
             local opts = {buffer = 0}
