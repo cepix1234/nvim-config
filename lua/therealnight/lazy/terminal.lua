@@ -3,7 +3,7 @@ return {
     version = "*",
     config = function()
         require("toggleterm").setup({
-            open_mapping = [[<c-/>]], -- or { [[<c-\>]], [[<c-¥>]] } if you also use a Japanese keyboard.
+            open_mapping = [[<leader>t]], -- or { [[<c-\>]], [[<c-¥>]] } if you also use a Japanese keyboard.
             persist_size = true,
             persist_mode = true,
             direction = 'horizontal',
