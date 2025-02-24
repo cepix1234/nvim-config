@@ -1,5 +1,5 @@
 return {
     'MoaidHathot/dotnet.nvim',
-        cmd = "DotnetUI",
-        opts = {},
+    cmd = "DotnetUI",
+    opts = {},
 }
