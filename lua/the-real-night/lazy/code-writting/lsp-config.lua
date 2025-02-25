@@ -10,7 +10,7 @@ return {
         "hrsh7th/nvim-cmp",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
-            "j-hui/fidget.nvim",
+        "j-hui/fidget.nvim",
         "jose-elias-alvarez/null-ls.nvim"
     },
 
@@ -73,8 +73,8 @@ return {
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }, -- For luasnip users.
             }, {
-                    { name = 'buffer' },
-                })
+                { name = 'buffer' },
+            })
         })
 
         vim.diagnostic.config({

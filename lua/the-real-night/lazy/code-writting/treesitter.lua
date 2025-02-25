@@ -36,14 +36,14 @@ return {
         treesitter_parser_config.templ = {
             install_info = {
                 url = "https://github.com/vrischmann/tree-sitter-templ.git",
-                files = {"src/parser.c", "src/scanner.c"},
+                files = { "src/parser.c", "src/scanner.c" },
                 branch = "master",
             },
         }
         treesitter_parser_config.powershell = {
             install_info = {
-                url = "~/.config/nvim/lua/therealnight/tsparsers/tree-sitter-powershell/",
-                files = { "src/parser.c", "src/scanner.c"},
+                url = "~/.config/nvim/lua/the-real-night/ts-parsers/tree-sitter-powershell/",
+                files = { "src/parser.c", "src/scanner.c" },
                 branch = "main",
                 generate_requires_npm = false,
                 requires_generate_from_grammar = false,

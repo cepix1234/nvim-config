@@ -6,7 +6,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     if vim.v.shell_error ~= 0 then
         vim.api.nvim_echo({
             { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-            { out, "WarningMsg" },
+            { out,                            "WarningMsg" },
             { "\nPress any key to exit..." },
         }, true, {})
         vim.fn.getchar()
@@ -19,7 +19,14 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
         -- import your plugins
-        { import = "therealnight.lazy" },
+        { import = "the-real-night.lazy" },
+        { import = "the-real-night.lazy.look-and-feel" },
+        { import = "the-real-night.lazy.git-integration" },
+        { import = "the-real-night.lazy.navigation" },
+        { import = "the-real-night.lazy.code-writting" },
+        { import = "the-real-night.lazy.code-execution-and-debugging" },
+        { import = "the-real-night.lazy.misc" },
+
     },
     change_detection = { notify = false }
 })
