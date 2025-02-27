@@ -11,7 +11,8 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
-        "jose-elias-alvarez/null-ls.nvim"
+        "jose-elias-alvarez/null-ls.nvim",
+        'saghen/blink.cmp'
     },
 
     config = function()
@@ -35,13 +36,13 @@ return {
             handlers = {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
+                        capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
                     }
                 end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
+                        capabilities = require('blink.cmp').get_lsp_capabilities(capabilities),
                         settings = {
                             Lua = {
                                 runtime = { version = "Lua 5.1" },
