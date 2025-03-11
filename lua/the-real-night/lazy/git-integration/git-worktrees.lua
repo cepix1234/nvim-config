@@ -17,6 +17,8 @@ return {
         Hooks.register(Hooks.type.SWITCH, function(path, prev_path)
             vim.notify('Moved:' .. prev_path .. '  ~>  ' .. path)
             update_on_switch(path, prev_path)
+            local nvimTreeActions = require "nvim-tree.actions"
+            nvimTreeActions.root.change_dir.fn(path)
         end)
 
         local switch_worktree = function()
