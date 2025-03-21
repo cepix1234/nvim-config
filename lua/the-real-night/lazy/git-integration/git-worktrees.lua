@@ -19,6 +19,8 @@ return {
             update_on_switch(path, prev_path)
             local nvimTreeActions = require "nvim-tree.actions"
             nvimTreeActions.root.change_dir.fn(path)
+            local tmuxUtil = require "the-real-night.tmux-setup"
+            tmuxUtil.dir_change(path)
         end)
 
         local switch_worktree = function()
